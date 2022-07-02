@@ -1,6 +1,9 @@
 #include <iostream>
 #include <time.h>
+#include <chrono>
 using namespace std;
+using namespace std::chrono;
+
 class Bogosort{
     private:
         int size; 
@@ -57,6 +60,12 @@ class Bogosort{
 //MAIN
 int main(){
     Bogosort bgsrt = Bogosort(5);
+    //Get starting timepoint
+    auto start = high_resolution_clock::now();
     bgsrt.ordenate();
+    //Get ending timepoint
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(stop - start);
+    cout << "Time taken by function: "<< duration.count() << " milliseconds" << endl;
     cin.get();
 }
